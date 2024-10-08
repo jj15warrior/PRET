@@ -27,13 +27,13 @@ timeout = 0.5         # be quick and dirty
 maxhost = 999         # max printers to list
 results = {}          # dict of found printers
 
+
+# use snmp v1 because it is most widely supported among printers
 try:
-    # use snmp v1 because it is most widely supported among printers
-    pmod = api.protoModules[api.protoVersion1]
+    pmod = api.v1
     pdu_send = pmod.GetRequestPDU()  # build protocol data unit (pdu)
 except:
     pass
-
 # cause timeout interrupt
 
 
@@ -110,11 +110,11 @@ class discovery():
             pmod.apiMessage.setCommunity(msg_send, 'public')
             pmod.apiMessage.setPDU(msg_send, pdu_send)
             # ...
-            dispatcher = AsyncoreDispatcher()
+            dispatcher = AsyncioDispatcher()
             dispatcher.registerRecvCbFun(recv)
             dispatcher.registerTimerCbFun(timer)
             # use ipv4 udp broadcast
-            udpSocketTransport = udp.UdpSocketTransport().openClientMode().enableBroadcast()
+            udpSocketTransport = udp.UdpAsyncioTransport().openClientMode()
             dispatcher.registerTransport(udp.domainName, udpSocketTransport)
             # pass message to dispatcher
             target = ('255.255.255.255', 161)
