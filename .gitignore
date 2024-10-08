@@ -3,4 +3,5 @@ venv/
 bin/
 lib/
 lib64/
+lib64
 pyenv.cfg
