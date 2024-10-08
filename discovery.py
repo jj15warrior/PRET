@@ -9,8 +9,8 @@ from helper import output, conv
 
 # third party modules
 try:
-    from pysnmp.carrier.asyncore.dispatch import AsyncoreDispatcher
-    from pysnmp.carrier.asyncore.dgram import udp
+    from pysnmp.carrier.asyncio.dispatch import AsyncioDispatcher
+    from pysnmp.carrier.asyncio.dgram import udp
     from pysnmp.proto import api
     from pyasn1.codec.ber import encoder, decoder
     snmp_modules_found = True
