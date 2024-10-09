@@ -835,10 +835,12 @@ class printer(cmd.Cmd, object):
             cmd = ["convert"] + pdf + [path, "-quality", "100", pdl + ":-"]
             out, err = subprocess.PIPE, subprocess.PIPE
             p = subprocess.Popen(cmd, stdout=out, stderr=err)
+
             data, stderr = p.communicate()
         except:
             stderr = "ImageMagick or Ghostscript missing"
         if stderr:
-            output().errmsg("Cannot convert", stderr)
+            if b"deprecated" not in stderr:
+                output().errmsg("Cannot convert", stderr)
         else:
             return data

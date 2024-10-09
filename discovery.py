@@ -115,11 +115,11 @@ class discovery():
             dispatcher.registerTimerCbFun(timer)
             # use ipv4 udp broadcast
             udpSocketTransport = udp.UdpAsyncioTransport().openClientMode()
-            dispatcher.registerTransport(udp.domainName, udpSocketTransport)
+            dispatcher.registerTransport(udp.DOMAIN_NAME, udpSocketTransport)
             # pass message to dispatcher
             target = ('255.255.255.255', 161)
             dispatcher.sendMessage(encoder.encode(
-                msg_send), udp.domainName, target)
+                msg_send), udp.DOMAIN_NAME, target)
             # wait for timeout or max hosts
             dispatcher.jobStarted(1, maxhost)
             # dispatcher will finish as all jobs counter reaches zero
