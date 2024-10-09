@@ -250,12 +250,12 @@ class pcl(printer):
         "extended": ["4", "Fonts Extended"],
     }
     locations = {
-        # '1': '(Selected)',
-        # '2': '(All Locations)',
-        "3": "(Internal)",
-        "4": "(Downloaded)",
-        "5": "(Cartridge)",
-        "7": "(ROM/SIMMs)",
+        # "1": "(Selected)",
+        "2": "(All Locations)",
+        #"3": "(Internal)",
+        #"4": "(Downloaded)",
+        #"5": "(Cartridge)",
+        #"7": "(ROM/SIMMs)",
     }
 
     # ------------------------[ df ]--------------------------------------
